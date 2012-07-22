@@ -79,6 +79,7 @@ AC_CONFIG_FILES([
           utf8cpp/Makefile \
           src/common/Makefile \
           src/aurora/Makefile \
+          src/xml/Makefile \
           src/Makefile \
           Makefile])
 AC_OUTPUT
