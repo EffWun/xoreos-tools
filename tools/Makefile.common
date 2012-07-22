@@ -1,0 +1,18 @@
+AUTOMAKE_OPTIONS = subdir-objects
+
+LIBSF_C_CXX = $(XOREOSTOOLS_CFLAGS)
+LIBSL_C_CXX = $(XOREOSTOOLS_LIBS)
+
+LIBSF_CXX = $(LIBSF_C_CXX)
+LIBSL_CXX = $(LIBSL_C_CXX)
+
+FLAGS_C_CXX = -I$(top_srcdir) -I$(top_srcdir)/src/ -ggdb -Wall -Wno-multichar \
+              -Wpointer-arith -Wshadow $(WERROR) $(LIBSF_C_CXX)
+LIBS_C_CXX  = $(LIBSL_C_CXX)
+
+AM_CXXFLAGS = $(FLAGS_C_CXX) -Wnon-virtual-dtor
+AM_CFLAGS   = $(FLAGS_C_CXX)
+
+AM_LDFLAGS = $(LIBSL_CXX)
+
+LIBS = $(LTLIBICONV)

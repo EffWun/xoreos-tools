@@ -1,0 +1,49 @@
+xoreos-tools - Tools to help with xoreos development
+Copyright (c) 2012 by the following:
+
+Sven Hesse (DrMcCoy) <drmccoy@drmccoy.de>
+Matthew Hoops (clone2727) <clone2727@gmail.com>
+
+
+xoreos-tools is free software; you can redistribute it and/or
+modify it under the terms of the GNU General Public License
+as published by the Free Software Foundation; either version 3
+of the License, or (at your option) any later version.
+
+This program is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+GNU General Public License for more details.
+
+You should have received a copy of the GNU General Public License
+along with this program; if not, write to the Free Software
+Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301, USA.
+
+
+The Infinity, Aurora, Odyssey and Eclipse engines, Copyright (c) BioWare corp.
+The Electron engine, Copyright (c) Obsidian Entertainment and BioWare corp.
+
+The Bink video codec, Copyright (c) RAD Game Tools.
+
+Neverwinter Nights, Copyright (c) BioWare corp. and Atari.
+Neverwinter Nights 2, Copyright (c) Obsidian Entertainment and Atari.
+Star Wars: Knights of the Old Republic, Copyright (c) BioWare corp. and LucasArts Entertainment Company.
+Star Wars: Knights of the Old Republic II - The Sith Lords, Copyright (c) Obsidian Entertainment and LucasArts Entertainment Company
+Jade Empire, Copyright (c) BioWare corp., LTI Gray Matter, Microsoft Game Studios and 2K Games.
+The Witcher, Copyright (c) CD Projekt and Atari.
+Sonic Chronicles: The Dark Brotherhood, Copyright (c) BioWare corp. and Sega.
+Dragon Age: Origins, Copyright (c) BioWare corp. and Electronic Arts.
+
+
+UTF-8 CPP
+*********
+   xoreos-tools uses the lightweight header-only UTF-8 CPP library
+   (<http://utfcpp.sourceforge.net/>) for handling UTF-8 encoded strings.
+   UTF-8 CPP is licensed under a copyleft license. See utf8cpp/utf8.h for
+   details.
+
+ScummVM code
+************
+   xoreos-tools uses some ScummVM (<http://scummvm.org/>) code, most prominently
+   the endian, singleton and stream code. ScummVM is licensed under version 2 or
+   later of the GNU General Public License.
