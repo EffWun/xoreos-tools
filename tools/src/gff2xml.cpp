@@ -27,6 +27,112 @@
  *  Tool to convert GFF files into XML.
  */
 
-int main(void) {
+#include <cstring>
+#include <cstdio>
+
+#include "common/ustring.h"
+#include "common/stream.h"
+#include "common/util.h"
+#include "common/strutil.h"
+#include "common/error.h"
+#include "common/file.h"
+
+#include "xml/gffdumper.h"
+
+void printUsage(FILE *stream, const char *name);
+bool parseCommandLine(int argc, char **argv, int &returnValue, Common::UString &file);
+
+void dumpGFF(const Common::UString &file);
+
+int main(int argc, char **argv) {
+	int returnValue;
+	Common::UString file;
+	if (!parseCommandLine(argc, argv, returnValue, file))
+		return returnValue;
+
+	try {
+		dumpGFF(file);
+	} catch (Common::Exception &e) {
+		Common::printException(e);
+		return -1;
+	}
+
 	return 0;
+}
+
+bool parseCommandLine(int argc, char **argv, int &returnValue, Common::UString &file) {
+	file.clear();
+
+	if (argc < 2) {
+		printUsage(stderr, argv[0]);
+		returnValue = -1;
+
+		return false;
+	}
+
+	bool optionsEnd = false;
+	for (int i = 1; i < argc; i++) {
+		// A "--" marks an end to all options
+		if (!strcmp(argv[i], "--")) {
+			optionsEnd = true;
+			continue;
+		}
+
+		// We're still handling options
+		if (!optionsEnd) {
+			// Help text
+			if (!strcmp(argv[i], "-h") || !strcmp(argv[i], "--help")) {
+				printUsage(stdout, argv[0]);
+				returnValue = 0;
+
+				return false;
+			}
+
+			// An options, but we already checked for all known ones
+			if (!strncmp(argv[i], "-", 1) || !strncmp(argv[i], "--", 2)) {
+				printUsage(stderr, argv[0]);
+				returnValue = -1;
+
+				return false;
+			}
+		}
+
+		// We already have a file => error
+		if (!file.empty()) {
+			printUsage(stderr, argv[0]);
+			returnValue = -1;
+
+			return false;
+		}
+
+		// This is a file to use
+		file = argv[i];
+	}
+
+	// No file? Error.
+	if (file.empty()) {
+		printUsage(stderr, argv[0]);
+		returnValue = -1;
+
+		return false;
+	}
+
+	return true;
+}
+
+void printUsage(FILE *stream, const char *name) {
+	std::fprintf(stream, "BioWare GFF to XML converter\n\n");
+	std::fprintf(stream, "Usage: %s [options] <file>\n", name);
+	std::fprintf(stream, "  -h      --help              This help text\n");
+}
+
+void dumpGFF(const Common::UString &file) {
+	Common::File gff(file);
+
+	XML::GFFDumper dumper;
+
+	Common::MemoryWriteStreamDynamic xml;
+	dumper.dump(xml, gff);
+
+	Common::printStream(xml);
 }

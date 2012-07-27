@@ -97,4 +97,18 @@ void printDataHex(const byte *data, uint32 size) {
 	printDataHex(stream);
 }
 
+void printStream(SeekableReadStream &stream) {
+	char c = stream.readByte();
+	while (!stream.eos()) {
+		std::printf("%c", c);
+		c = stream.readByte();
+	}
+}
+
+void printStream(MemoryWriteStreamDynamic &stream) {
+	Common::MemoryReadStream readStream(stream.getData(), stream.size());
+
+	printStream(readStream);
+}
+
 } // End of namespace Common

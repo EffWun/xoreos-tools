@@ -1,0 +1,7 @@
+A collection of tools to help with xoreos development:
+
+gff2xml
+-------
+
+Convert BioWare GFF to standalone XML. Binary data enclosed in the GFF will be
+base64-encoded.

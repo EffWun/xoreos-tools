@@ -26,3 +26,10 @@ At the moment, this directory contains file format specifications, both official
 * kotor_mdl.html: Partial KotOR model specs
 * nds_sdat.html: Partial Nintendo DS Nitro Composer File (*.sdat)
   specs, by kiwi.ds
+
+tools
+-----
+
+A collection of tools to help with xoreos development:
+
+* gff2xml: Convert BioWare GFF to XML
