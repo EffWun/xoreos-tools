@@ -5,3 +5,13 @@ gff2xml
 
 Convert BioWare GFF to standalone XML. Binary data enclosed in the GFF will be
 base64-encoded.
+
+unerf
+-----
+
+Extract BioWare ERF (.erf, .mod, .nwm, .sav) archives.
+
+unrim
+-----
+
+Extract BioWare RIM archives.
