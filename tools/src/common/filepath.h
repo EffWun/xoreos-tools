@@ -56,6 +56,15 @@ public:
 	 *  @return The new path.
 	 */
 	static UString changeExtension(const UString &p, const UString &ext = "");
+
+	/** Return a file name from a path.
+	 *
+	 *  Example: "/path/to/file.ext" -> "file.ext"
+	 *
+	 *  @param  p The path to manipulate.
+	 *  @return The path's file.
+	 */
+	static UString getFile(const UString &p);
 };
 
 } // End of namespace Common

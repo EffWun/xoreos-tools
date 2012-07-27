@@ -39,4 +39,18 @@ UString FilePath::changeExtension(const UString &p, const UString &ext) {
 	return UString(p.begin(), p.findLast('.')) + ext;
 }
 
+UString FilePath::getFile(const UString &p) {
+	UString file = p;
+
+	UString::iterator slash = file.findLast('/');
+	if (slash != file.end())
+		file = UString(++slash, file.end());
+
+	UString::iterator backslash = file.findLast('\\');
+	if (backslash != file.end())
+		file = UString(++backslash, file.end());
+
+	return file;
+}
+
 } // End of namespace Common
