@@ -37,6 +37,8 @@
 #include "aurora/util.h"
 #include "aurora/erffile.h"
 
+#include "util.h"
+
 enum Command {
 	kCommandNone    = -1,
 	kCommandInfo    =  0,
@@ -182,16 +184,7 @@ void extractFiles(Aurora::ERFFile &erf) {
 		try {
 			stream = erf.getResource(r->index);
 
-			Common::DumpFile file;
-			if (!file.open(fileName))
-				throw Common::Exception(Common::kOpenError);
-
-			file.writeStream(*stream);
-			file.flush();
-			if (file.err())
-				throw Common::Exception(Common::kWriteError);
-
-			file.close();
+			dumpStream(*stream, fileName);
 
 			std::printf("Done\n");
 		} catch (Common::Exception &e) {

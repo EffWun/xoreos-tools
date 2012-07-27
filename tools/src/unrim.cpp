@@ -37,6 +37,8 @@
 #include "aurora/util.h"
 #include "aurora/rimfile.h"
 
+#include "util.h"
+
 enum Command {
 	kCommandNone    = -1,
 	kCommandList    =  0,
@@ -152,16 +154,7 @@ void extractFiles(Aurora::RIMFile &rim) {
 		try {
 			stream = rim.getResource(r->index);
 
-			Common::DumpFile file;
-			if (!file.open(fileName))
-				throw Common::Exception(Common::kOpenError);
-
-			file.writeStream(*stream);
-			file.flush();
-			if (file.err())
-				throw Common::Exception(Common::kWriteError);
-
-			file.close();
+			dumpStream(*stream, fileName);
 
 			std::printf("Done\n");
 		} catch (Common::Exception &e) {
