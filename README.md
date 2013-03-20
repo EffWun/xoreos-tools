@@ -35,4 +35,5 @@ A collection of tools to help with xoreos development:
 * gff2xml: Convert BioWare GFF to XML
 * unerf: Extract BioWare ERF archives
 * unrim: Extract BioWare RIM archives
+* unnds: Extract Nintendo DS roms
 * unkeybif: Extract BioWare KEY/BIF archives

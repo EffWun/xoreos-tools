@@ -4,7 +4,7 @@ SUBDIRS = common aurora xml
 
 noinst_HEADERS = util.h
 
-bin_PROGRAMS = gff2xml unerf unrim unkeybif
+bin_PROGRAMS = gff2xml unerf unrim unkeybif unnds
 
 gff2xml_SOURCES = gff2xml.cpp
 gff2xml_LDADD = xml/libxml.la aurora/libaurora.la common/libcommon.la
@@ -17,3 +17,6 @@ unrim_LDADD = aurora/libaurora.la common/libcommon.la
 
 unkeybif_SOURCES = unkeybif.cpp util.cpp
 unkeybif_LDADD = aurora/libaurora.la common/libcommon.la
+
+unnds_SOURCES = unnds.cpp util.cpp
+unnds_LDADD = aurora/libaurora.la common/libcommon.la
